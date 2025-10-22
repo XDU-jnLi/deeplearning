@@ -10,6 +10,8 @@ class Inception(nn.Module):
         super(Inception,self).__init__(**kwargs)
         
         self.p1_1 = nn.Sequential(nn.Conv2d(in_channels,c1,kernel_size = 1,bias = False),nn.BatchNorm2d(c1))
+        ##这里加bias = False,是因为加偏差是线性操作，z = WX + b,但是BN 做了一件事，去均值，除以sqrt(var + eps),这件事让bias失去作用，那我们就可以去掉bias，
+        ##节省存储空间。而且还少计算很多梯度和加减乘除之类的运算
         
         self.p2_1 = nn.Sequential(nn.Conv2d(in_channels,c2[0],kernel_size = 1,bias = False),nn.BatchNorm2d(c2[0]))
         self.p2_2 = nn.Sequential(nn.Conv2d(c2[0],c2[1],kernel_size = 3,padding = 1,bias = False),nn.BatchNorm2d(c2[1]))
