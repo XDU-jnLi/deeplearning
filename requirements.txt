@@ -1,0 +1,12 @@
+# WM基础 的依赖
+#
+# 注意：这里故意没有写 torch。
+# 直接 pip install torch 可能会把你本地已经装好的 CUDA 版 torch 换掉。
+# 你的 d2l 环境里已经有 torch 了，可以直接用；新装请到
+# https://pytorch.org/get-started/locally/ 选择和你显卡匹配的版本。
+numpy>=1.21
+matplotlib>=3.5
+jupyter
+
+# 从第 2 课开始需要：
+# gymnasium>=0.29
